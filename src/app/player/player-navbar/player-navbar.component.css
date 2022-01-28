@@ -1,0 +1,41 @@
+h2{
+  margin: 0 0 0 3em;
+  padding: 1ch;
+}
+
+.navbar{
+  margin: 0px 0px 4px;
+}
+
+ul{
+  display: block;
+  margin: 0px;
+  padding-top: 8px;
+
+}
+
+.tab {
+  display: inline-block;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  padding: 6px;
+  margin: 0px;
+  min-width: 10ch;
+  background-color: #fcfdfe;
+  border-bottom: 2px solid black;
+}
+
+.tab-active{
+  background-color: white;
+  border: 2px solid black;
+  border-bottom: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+
+

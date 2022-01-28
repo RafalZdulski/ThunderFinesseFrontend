@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {PlayerService} from "../services/player.service";
+import {Player} from "../../../model/player";
 
 @Component({
   selector: 'app-player-overall-stats',
@@ -6,10 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player-overall-stats.component.css']
 })
 export class PlayerOverallStatsComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
   }
+
 
 }

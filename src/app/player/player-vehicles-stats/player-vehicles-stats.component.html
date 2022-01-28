@@ -1,0 +1,279 @@
+
+<app-player-navbar></app-player-navbar>
+
+<div class="tab-bar">
+  <ul>
+    <li class="tab" id="air_ab" #air_ab (click)="changeMode(air_ab)" ><div>AB air</div></li>
+    <li class="tab" id="ground_ab" #ground_ab (click)="changeMode(ground_ab)" ><div>AB ground</div></li>
+    <li class="tab" id="air_rb" #air_rb (click)="changeMode(air_rb)" ><div>RB air</div></li>
+    <li class="tab tab-active" id="ground_rb" #ground_rb (click)="changeMode(ground_rb)" ><div>RB ground</div></li>
+    <li class="tab" id="air_sb" #air_sb (click)="changeMode(air_sb)" ><div>SB air</div></li>
+    <li class="tab" id="ground_sb" #ground_sb (click)="changeMode(ground_sb)" ><div>SB ground</div></li>
+  </ul>
+</div>
+
+<div>
+  <div id="filters">
+  <form method="get" id="filters-form">
+    <div class="filter" id="rank-filter">
+      <div class="filter-label">Rank:
+        <span class="check-all">all</span> | <span class="uncheck-all">none</span> <br>
+        <div class="filter-option">
+          <input type="checkbox" name="rank" value="I" id="rank-I-checkbox" />
+          <label for="rank-I-checkbox">I</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="rank" value="II" id="rank-II-checkbox" />
+          <label for="rank-II-checkbox">II</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="rank" value="III" id="rank-III-checkbox" />
+          <label for="rank-III-checkbox">III</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="rank" value="IV" id="rank-IV-checkbox" />
+          <label for="rank-IV-checkbox">IV</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="rank" value="V" id="rank-V-checkbox" />
+          <label for="rank-V-checkbox">V</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="rank" value="VI" id="rank-VI-checkbox" />
+          <label for="rank-VI-checkbox">VI</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="rank" value="VII" id="rank-VII-checkbox" />
+          <label for="rank-VII-checkbox">VII</label>
+        </div>
+      </div>
+    </div>
+    <div class="filter" id="nation-filter">
+      <div class="filter-label">Nation:
+        <span class="check-all">all</span> | <span class="uncheck-all">none</span> <br>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="USA" id="nation-USA-checkbox" />
+          <label for="nation-Israel-checkbox">USA</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="Germany" id="nation-Germany-checkbox" />
+          <label for="nation-Israel-checkbox">Germany</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="USSR" id="nation-USSR-checkbox" />
+          <label for="nation-Israel-checkbox">USSR</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="Britain" id="nation-Britain-checkbox" />
+          <label for="nation-Israel-checkbox">Britain</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="Japan" id="nation-Japan-checkbox" />
+          <label for="nation-Israel-checkbox">Japan</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="China" id="nation-China-checkbox" />
+          <label for="nation-Israel-checkbox">China</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="Italy" id="nation-Italy-checkbox" />
+          <label for="nation-Israel-checkbox">Italy</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="France" id="nation-France-checkbox" />
+          <label for="nation-Israel-checkbox">France</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="Sweden" id="nation-Sweden-checkbox" />
+          <label for="nation-Israel-checkbox">Sweden</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="nation" value="Israel" id="nation-Israel-checkbox" />
+          <label for="nation-Israel-checkbox">Israel</label>
+        </div>
+      </div>
+    </div>
+    <div class="filter" id="br-filter">
+      <div class="filter-label">Battle rating: <br></div>
+      <select class="filter-option" name="br-lower">
+        <option value="1.0" id="lower-1.0">1.0</option>
+        <option value="1.3" id="lower-1.3">1.3</option>
+        <option value="1.7" id="lower-1.7">1.7</option>
+        <option value="1.0" id="lower-2.0">2.0</option>
+        <option value="2.3" id="lower-2.3">2.3</option>
+        <option value="2.7" id="lower-2.7">2.7</option>
+        <option value="3.0" id="lower-3.0">3.0</option>
+        <option value="3.3" id="lower-3.3">3.3</option>
+        <option value="3.7" id="lower-3.7">3.7</option>
+        <option value="4.0" id="lower-4.0">4.0</option>
+        <option value="4.3" id="lower-4.3">4.3</option>
+        <option value="4.7" id="lower-4.7">4.7</option>
+        <option value="5.0" id="lower-5.0">5.0</option>
+        <option value="5.3" id="lower-5.3">5.3</option>
+        <option value="5.7" id="lower-5.7">5.7</option>
+        <option value="6.0" id="lower-6.0">6.0</option>
+        <option value="6.3" id="lower-6.3">6.3</option>
+        <option value="6.7" id="lower-6.7">6.7</option>
+        <option value="7.0" id="lower-7.0">7.0</option>
+        <option value="7.3" id="lower-7.3">7.3</option>
+        <option value="7.7" id="lower-7.7">7.7</option>
+        <option value="8.0" id="lower-8.0">8.0</option>
+        <option value="8.3" id="lower-8.3">8.3</option>
+        <option value="8.7" id="lower-8.7">8.7</option>
+        <option value="9.0" id="lower-9.0">9.0</option>
+        <option value="9.3" id="lower-9.3">9.3</option>
+        <option value="9.7" id="lower-9.7">9.7</option>
+        <option value="10.0" id="lower-10.0">10.0</option>
+        <option value="10.3" id="lower-10.3">10.3</option>
+        <option value="10.7" id="lower-10.7">10.7</option>
+        <option value="11.0" id="lower-11.0">11.0</option>
+        <option value="11.3" id="lower-11.3">11.3</option>
+      </select>
+      -
+      <select class="filter-option" name="br-upper">
+        <option value="1.0" id="upper-1.0">1.0</option>
+        <option value="1.3" id="upper-1.3">1.3</option>
+        <option value="1.7" id="upper-1.7">1.7</option>
+        <option value="1.0" id="upper-2.0">2.0</option>
+        <option value="2.3" id="upper-2.3">2.3</option>
+        <option value="2.7" id="upper-2.7">2.7</option>
+        <option value="2.0" id="upper-3.0">3.0</option>
+        <option value="3.3" id="upper-3.3">3.3</option>
+        <option value="3.7" id="upper-3.7">3.7</option>
+        <option value="4.0" id="upper-4.0">4.0</option>
+        <option value="4.3" id="upper-4.3">4.3</option>
+        <option value="4.7" id="upper-4.7">4.7</option>
+        <option value="5.0" id="upper-5.0">5.0</option>
+        <option value="5.3" id="upper-5.3">5.3</option>
+        <option value="5.7" id="upper-5.7">5.7</option>
+        <option value="6.0" id="upper-6.0">6.0</option>
+        <option value="6.3" id="upper-6.3">6.3</option>
+        <option value="6.7" id="upper-6.7">6.7</option>
+        <option value="7.0" id="upper-7.0">7.0</option>
+        <option value="7.3" id="upper-7.3">7.3</option>
+        <option value="7.7" id="upper-7.7">7.7</option>
+        <option value="8.0" id="upper-8.0">8.0</option>
+        <option value="8.3" id="upper-8.3">8.3</option>
+        <option value="8.7" id="upper-8.7">8.7</option>
+        <option value="9.0" id="upper-9.0">9.0</option>
+        <option value="9.3" id="upper-9.3">9.3</option>
+        <option value="9.7" id="upper-9.7">9.7</option>
+        <option value="10.0" id="upper-10.0">10.0</option>
+        <option value="10.3" id="upper-10.3">10.3</option>
+        <option value="10.7" id="upper-10.7">10.7</option>
+        <option value="11.0" id="upper-11.0">11.0</option>
+        <option value="11.3" id="upper-11.3">11.3</option>
+      </select>
+    </div>
+    <div class="filter" id="class-filters" >
+      <div class="filters" id="army-class-filter" >
+        <div class="filter-label">Class:
+          <span class="check-all">all</span> | <span class="uncheck-all">none</span> <br>
+        <div class="filter-option">
+          <input type="checkbox" name="ground-class" value="Light_tank" id="ground-class-Light_tank-checkbox" />
+          <label for="ground-class-Light_tank-checkbox">light tank</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="ground-class" value="Medium_tank" id="ground-class-Medium_tank-checkbox" />
+          <label for="ground-class-Medium_tank-checkbox">medium tank</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="ground-class" value="Heavy_tank" id="ground-class-Heavy_tank-checkbox" />
+          <label for="ground-class-Heavy_tank-checkbox">heavy tank</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="ground-class" value="Tank_destroyer" id="ground-class-Tank_destroyer-checkbox" />
+          <label for="ground-class-Tank_destroyer-checkbox">tank destroyer</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="ground-class" value="SPAA" id="ground-class-SPAA-checkbox" />
+          <label for="ground-class-SPAA-checkbox">spaa</label>
+        </div>
+        </div>
+      </div>
+      <div class="filter" id="aviation-class-filter" >
+        <div class="filter-label">Class:
+          <span class="check-all">all</span> |<span class="uncheck-all">none</span> <br>
+          <div class="filter-option">
+            <input type="checkbox" name="air-class" value="Fighter" id="air-class-Fighter-checkbox" />
+            <label for="air-class-Fighter-checkbox">fighter</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" name="air-class" value="Strike_aircraft" id="air-class-Strike_aircraft-checkbox" />
+            <label for="air-class-Strike_aircraft-checkbox">strike</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" name="air-class" value="Bomber" id="air-class-Bomber-checkbox" />
+            <label for="air-class-Bomber-checkbox">bomber</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter" id="status-filters">
+      <div class="filter-label">Status:
+        <span class="check-all">all</span> | <span class="uncheck-all">none</span><br>
+        <div class="filter-option">
+          <input type="checkbox" name="status" value="Tree" id="status-Tree-checkbox" />
+          <label for="status-Tree-checkbox">Tree</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="status" value="Premium" id="status-Premium-checkbox" />
+          <label for="status-Tree-checkbox">Premium</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="status" value="Gift" id="status-Gift-checkbox" />
+          <label for="status-Tree-checkbox">Gift</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" name="status" value="Squadron" id="status-Squadron-checkbox" />
+          <label for="status-Tree-checkbox">Squadron</label>
+        </div>
+      </div>
+    </div>
+    <div id="filter-btn">
+      <button>filter</button>
+    </div>
+  </form>
+</div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">lp</th>
+      <th>Rank</th>
+      <th>Nation</th>
+      <th>br</th>
+      <th>Class</th>
+      <th>Name</th>
+      <th>Victories</th>
+      <th>Battles</th>
+      <th>wr%</th>
+      <th>Spawns</th>
+      <th>Deaths</th>
+      <th>Ground Kills</th>
+      <th>Air Kills</th>
+      <th>k/d</th>
+      <th>k/s</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let v of vehicles; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{v.rank}}</td>
+      <td>{{v.nation}}</td>
+      <td>{{v.battleRating[0]}}</td>
+      <td>{{v.klass}}</td>
+      <td>{{v.name}}</td>
+      <td>{{v.victories}}</td>
+      <td>{{v.battles}}</td>
+      <td>{{(v.winRatio*100).toFixed(2).substr(0,5)}}</td>
+      <td>{{v.respawns}}</td>
+      <td>{{v.deaths}}</td>
+      <td>{{v.groundKills}}</td>
+      <td>{{v.airKills}}</td>
+      <td>{{(v.kdRatio*1).toFixed(2)}}</td>
+      <td>{{(v.ksRatio*1).toFixed(2)}}</td>
+    </tr>
+  </tbody>
+</table>

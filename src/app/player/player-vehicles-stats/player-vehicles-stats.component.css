@@ -1,0 +1,90 @@
+/******        TAB BAR         ******/
+.tab-bar{
+  margin: 0px;
+}
+
+ul{
+  display: block;
+  margin: 0;
+  padding-top: 8px;
+
+}
+
+.tab {
+  display: inline-block;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  padding: 8px;
+  margin: 0;
+  min-width: 10ch;
+  border-bottom: 2px solid black;
+}
+
+.tab-active{
+  background-color: white;
+  border: 2px solid black;
+  border-bottom: 0;
+}
+/******        TAB BAR         ******/
+
+/******        FILTERS         ******/
+#filters{
+  margin: 1em;
+  padding: 4px 1em 1em 1em;
+  border: 1px solid black;
+}
+
+.filter-label{
+  padding: 4px;
+  margin: 6px 0 0px;
+  font-weight: bold;
+}
+.filter-label > span{
+  font-weight: normal;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.filter-option{
+  display: inline-block;
+  text-align: center;
+  margin: 2px 8px 2px;
+}
+
+#filter-btn{
+  text-align: center;
+}
+#filter-btn > button{
+  padding: 4px;
+  margin: 4px;
+  min-width: 100px;
+}
+/******        FILTERS         ******/
+
+
+/******        TABLE         ******/
+table {
+  border-collapse: collapse;
+  margin: 1em;
+}
+td {
+  text-align: left;
+  padding: 10px;
+  min-width: 2ch;
+  border-bottom: 1px solid lightgray;
+}
+tr:nth-child(even) {
+  background-color: white;
+}
+tr:nth-child(odd) {
+  background-color: #eef0f8;
+}
+
+th{
+  padding: 10px;
+  text-align: left;
+  background-color: white;
+  border-bottom: 2px solid black;
+}
+/******        TABLE         ******/

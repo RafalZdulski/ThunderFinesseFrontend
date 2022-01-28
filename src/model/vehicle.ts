@@ -1,22 +1,24 @@
 export class Vehicle {
-  _id: string;
-  name: string;
-  type: string;
-  status: string;
-  klass: string;
-  nation: string;
-  rank: string;
-  battle_rating: string[];
-  battles: number;
-  respawns: number;
-  deaths: number;
-  victories: number;
-  defeats: number;
-  airKills: number;
-  groundKills: number;
-  allKills: number;
-  winRatio: number;
-  kdRation: number;
-  ksRatio: number;
+    public _id!: string;
+    public name!: string;
+    public type!: string;
+    public status!: string;
+    public klass!: string;
+    public nation!: string;
+    public rank!: string;
+    public battle_rating!: string[];
+    public battles!: number;
+    public respawns!: number;
+    public deaths!: number;
+    public victories!: number;
+    public defeats!: number;
+    public airKills!: number;
+    public groundKills!: number;
+    public allKills!: number;
+    public winRatio!: number;
+    public kdRatio!: number;
+    public ksRatio!: number
+
+
 
 }

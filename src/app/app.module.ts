@@ -1,31 +1,38 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
+import { HttpClientModule} from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PlayerComponent } from './player/player.component';
-import {PlayerOverallStatsComponent} from "./player-overall-stats/player-overall-stats.component";
-import {PlayerVehiclesStatsComponent} from "./player-vehicles-stats/player-vehicles-stats.component";
+import {PlayerOverallStatsComponent} from "./player/player-overall-stats/player-overall-stats.component";
+import {PlayerVehiclesStatsComponent} from "./player/player-vehicles-stats/player-vehicles-stats.component";
+import {MainNavbarComponent} from "./main-navbar/main-navbar.component";
+import {PlayerService} from "./player/services/player.service";
+import { PlayerNavbarComponent } from './player/player-navbar/player-navbar.component';
+import { PlayerGraphsComponent } from './player/player-graphs/player-graphs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainNavbarComponent,
     DashboardComponent,
-    PlayerComponent,
     PlayerOverallStatsComponent,
-    PlayerVehiclesStatsComponent
+    PlayerVehiclesStatsComponent,
+    PlayerNavbarComponent,
+    PlayerGraphsComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [PlayerService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-navbar',
@@ -8,15 +9,16 @@ import {Component, Input, OnInit} from '@angular/core';
 export class MainNavbarComponent implements OnInit {
   login: string ="";
 
-  constructor() {}
+  constructor(public router: Router) {}
 
   ngOnInit(): void {
   }
 
-  search(){
-    if (this.login !== ""){
-      console.log(this.login);
+  search() {
+    if (this.login.trim().length == 0){
+      console.log("empty login");
+    }else{
+      this.router.navigate(['player/' + this.login]);
     }
   }
-
 }
