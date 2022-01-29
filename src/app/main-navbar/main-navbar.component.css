@@ -2,5 +2,10 @@
   text-align: center;
   padding: 10px;
   margin: 0;
-  background-color: rgba(47, 151, 218, 0.64);
+  background-color: lightblue;
+  border-bottom: 5px outset;
+}
+
+#login{
+  width: 40%;
 }

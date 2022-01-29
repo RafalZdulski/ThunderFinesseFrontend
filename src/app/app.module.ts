@@ -14,6 +14,7 @@ import {MainNavbarComponent} from "./main-navbar/main-navbar.component";
 import {PlayerService} from "./player/services/player.service";
 import { PlayerNavbarComponent } from './player/player-navbar/player-navbar.component';
 import { PlayerGraphsComponent } from './player/player-graphs/player-graphs.component';
+import { SortTableDirective } from './directive/sort-table.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PlayerGraphsComponent } from './player/player-graphs/player-graphs.comp
     PlayerOverallStatsComponent,
     PlayerVehiclesStatsComponent,
     PlayerNavbarComponent,
-    PlayerGraphsComponent
+    PlayerGraphsComponent,
+    SortTableDirective
   ],
   imports: [
     BrowserModule,
