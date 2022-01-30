@@ -36,20 +36,22 @@ export class PlayerVehiclesStatsComponent implements OnInit {
       this.login = params['login'];
     });
 
+    //getting stats
     this.playerService.getPlayer(this.login).subscribe(
       player => {
         this.player = player;
         this.allVehicles = player.ground_rb;
-        this.filteredVehicles = this.allVehicles.copyWithin(
-          this.allVehicles.length,0);
-
+        this.filteredVehicles = this.allVehicles
+          .copyWithin(this.allVehicles.length,0)
+          //initial sorting by battles
+          .sort((v1,v2) => {
+            return v2.battles - v1.battles
+          });
         //init filtering for setting values in summary-row after loading page;
         this.filterList();
       }
-    );
-
-    //hide aircraft classes from form
-
+    )
+    this.setRatiosColors()
   }
 
   ngOnInit(): void {
@@ -63,9 +65,9 @@ export class PlayerVehiclesStatsComponent implements OnInit {
     $('#upper-11\\.3').each(function (i,el){el.setAttribute('selected','selected')})
     //hiding filters
     $('#filters').prop('hidden',true);
-
+    //sorting by battles
+    $('th[data-name|=battles]').prop('sorted',true);
     //*******************************//
-
 
 
     //******* 'on' functions *******//
@@ -115,7 +117,6 @@ export class PlayerVehiclesStatsComponent implements OnInit {
         $('#filters').prop('hidden',false);
       }
     })
-
     //***************************//
   }
 
@@ -186,6 +187,8 @@ export class PlayerVehiclesStatsComponent implements OnInit {
 
     //init filterList to set values in summary-row after each change of mode
     this.filterList();
+
+    this.setRatiosColors();
   }
 
   filterList() {
@@ -256,4 +259,36 @@ export class PlayerVehiclesStatsComponent implements OnInit {
     }
   }
 
+  setRatiosColors(){
+    //TODO needs refactoring asap but i dont know other way to wait until ngFor finish
+    setTimeout(function (){
+      //setting win ratio colors
+      $('td.win-ratio').each(function (i,el){
+        let val = $(this);
+        if(Number.parseFloat(el.innerHTML) <= 45 ) val.css('background-color','tomato');
+        else if(Number.parseFloat(el.innerHTML) <= 52 ) val.css('background-color','khaki');
+        else if(Number.parseFloat(el.innerHTML) <= 58 ) val.css('background-color','lightgreen');
+        else if(Number.parseFloat(el.innerHTML) <= 63 ) val.css('background-color','CornflowerBlue');
+        else val.css('background-color','darkorchid');
+      });
+      //setting kd ratio colors
+      $('td.kd-ratio').each(function (i,el){
+        let val = $(this);
+        if(Number.parseFloat(el.innerHTML) <= 1.0 ) val.css('background-color','tomato');
+        else if(Number.parseFloat(el.innerHTML) <= 1.5 ) val.css('background-color','khaki');
+        else if(Number.parseFloat(el.innerHTML) <= 2.0 ) val.css('background-color','lightgreen');
+        else if(Number.parseFloat(el.innerHTML) <= 2.5 ) val.css('background-color','CornflowerBlue');
+        else val.css('background-color','darkorchid');
+      });
+      //setting ks ratio colors
+      $('td.ks-ratio').each(function (i,el){
+        let val = $(this);
+        if(Number.parseFloat(el.innerHTML) <= 1.0 ) val.css('background-color','tomato');
+        else if(Number.parseFloat(el.innerHTML) <= 1.5 ) val.css('background-color','khaki');
+        else if(Number.parseFloat(el.innerHTML) <= 2.0 ) val.css('background-color','lightgreen');
+        else if(Number.parseFloat(el.innerHTML) <= 2.5 ) val.css('background-color','CornflowerBlue');
+        else val.css('background-color','darkorchid');
+      });
+    },1000)
+  }
 }

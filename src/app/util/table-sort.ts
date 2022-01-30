@@ -17,16 +17,28 @@ export class SortTable {
         return this.sortData(new Date(a[property]), new Date(b[property]));
       }
       else if (type === "br-ab") {
-        return this.sortData(a["battleRating"][0], b['battleRating'][0]);
+        return this.sortData(
+          Number.parseFloat(a["battleRating"][0]),
+          Number.parseFloat(b['battleRating'][0])
+        );
       }
       else if (type === "br-rb") {
-        return this.sortData(a['battleRating'][1], b['battleRating'][1]);
+        return this.sortData(
+          Number.parseFloat(a['battleRating'][1]),
+          Number.parseFloat(b['battleRating'][1])
+        );
       }
       else if (type === "br-sb") {
-        return this.sortData(a['battleRating'][2], b['battleRating'][2]);
+        return this.sortData(
+          Number.parseFloat(a['battleRating'][2]),
+          Number.parseFloat(b['battleRating'][2])
+        );
       }
       else if (type === "float"){
-        return this.sortData(Number.parseFloat(a[property]), Number.parseFloat(b[property]));
+        return this.sortData(
+          Number.parseFloat(a[property]),
+          Number.parseFloat(b[property])
+        );
       }
       else {
         return this.collator.compare(a[property], b[property]) * this.sortOrder;

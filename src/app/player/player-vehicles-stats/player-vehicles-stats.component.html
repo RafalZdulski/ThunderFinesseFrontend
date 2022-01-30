@@ -257,14 +257,14 @@
   <table>
     <thead>
       <tr>
-        <th scope="col">lp</th>
+        <th scope="col"># </th>
         <th [appSortTable]="filteredVehicles" data-order="desc" data-name="rank" scope="col">Rank</th>
         <th [appSortTable]="filteredVehicles" data-order="desc" data-name="nation" scope="col">Nation</th>
         <th [appSortTable]="filteredVehicles" data-order="desc" data-name="battleRating" data-type="br-rb" scope="col">br</th>
         <th [appSortTable]="filteredVehicles" data-order="desc" data-name="klass" scope="col">Class</th>
         <th [appSortTable]="filteredVehicles" data-order="desc" data-name="name" scope="col">Name</th>
         <th [appSortTable]="filteredVehicles" data-order="desc" data-name="victories" scope="col">Victories</th>
-        <th [appSortTable]="filteredVehicles" data-order="desc" data-name="battles" scope="col">Battles</th>
+        <th [appSortTable]="filteredVehicles" sorted data-order="asc" data-name="battles" scope="col">Battles</th>
         <th [appSortTable]="filteredVehicles" data-order="desc" data-name="winRatio" data-type="float" scope="col">wr%</th>
         <th [appSortTable]="filteredVehicles" data-order="desc" data-name="respawns" scope="col">Spawns</th>
         <th [appSortTable]="filteredVehicles" data-order="desc" data-name="deaths" scope="col">Deaths</th>
@@ -275,35 +275,35 @@
       </tr>
     </thead>
     <tr id="summary-row">
-      <td>{{filteredVehicles?.length}}</td>
+      <td class="number">{{filteredVehicles?.length}}</td>
       <td colspan="5" style="text-align: center">summary</td>
-      <td>{{victoriesSum}}</td>
-      <td>{{battlesSum}}</td>
-      <td>{{(winRatioSum*100).toFixed(2).substr(0,5)}}</td>
-      <td>{{spawnsSum}}</td>
-      <td>{{deathsSum}}</td>
-      <td>{{groundKillsSum}}</td>
-      <td>{{airKillsSum}}</td>
-      <td>{{kdRatioSum.toFixed(2)}}</td>
-      <td>{{ksRatioSum.toFixed(2)}}</td>
+      <td class="number">{{victoriesSum}}</td>
+      <td class="number">{{battlesSum}}</td>
+      <td class="number win-ratio">{{(winRatioSum*100).toFixed(2).substr(0,5)}}</td>
+      <td class="number">{{spawnsSum}}</td>
+      <td class="number">{{deathsSum}}</td>
+      <td class="number">{{groundKillsSum}}</td>
+      <td class="number">{{airKillsSum}}</td>
+      <td class="number kd-ratio">{{kdRatioSum.toFixed(2)}}</td>
+      <td class="number ks-ratio">{{ksRatioSum.toFixed(2)}}</td>
     </tr>
     <tbody>
       <tr *ngFor="let v of filteredVehicles; let i = index">
-        <td>{{i+1}}</td>
+        <td class="number">{{i+1}}</td>
         <td>{{v.rank}}</td>
         <td>{{v.nation}}</td>
         <td>{{v.battleRating[mode]}}</td>
         <td>{{v.klass}}</td>
         <td>{{v.name}}</td>
-        <td>{{v.victories}}</td>
-        <td>{{v.battles}}</td>
-        <td>{{(v.winRatio*100).toFixed(2).substr(0,5)}}</td>
-        <td>{{v.respawns}}</td>
-        <td>{{v.deaths}}</td>
-        <td>{{v.groundKills}}</td>
-        <td>{{v.airKills}}</td>
-        <td>{{(v.kdRatio*1).toFixed(2)}}</td>
-        <td>{{(v.ksRatio*1).toFixed(2)}}</td>
+        <td class="number">{{v.victories}}</td>
+        <td class="number">{{v.battles}}</td>
+        <td class="number win-ratio">{{(v.winRatio*100).toFixed(2).substr(0,5)}}</td>
+        <td class="number">{{v.respawns}}</td>
+        <td class="number">{{v.deaths}}</td>
+        <td class="number">{{v.groundKills}}</td>
+        <td class="number">{{v.airKills}}</td>
+        <td class="number kd-ratio">{{(v.kdRatio*1).toFixed(2)}}</td>
+        <td class="number ks-ratio">{{(v.ksRatio*1).toFixed(2)}}</td>
       </tr>
     </tbody>
   </table>

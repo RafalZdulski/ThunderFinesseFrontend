@@ -120,9 +120,13 @@ table {
 }
 td {
   text-align: left;
-  padding: 10px;
+  padding: 5px;
   min-width: 2ch;
-  border-bottom: 1px solid lightgray;
+  border: 1px solid lightgray;
+}
+td.number{
+  text-align: right;
+  padding-right: 1ex;
 }
 tr:nth-child(even) {
   background-color: #eef0f8;
@@ -136,12 +140,16 @@ th{
   background-color: lightblue;
   border-bottom: 2px outset;
 }
+th[sorted][data-order|='asc']::after { content: "   \25bc" }
+th[sorted][data-order|='desc']::after { content: "   \25b2" }
+
 #summary-row{
   font-style: italic;
   font-weight: bold;
   border-bottom: 2px dotted grey;
   background-color: #eef0f8;
 }
+
 /******        TABLE         ******/
 
 
