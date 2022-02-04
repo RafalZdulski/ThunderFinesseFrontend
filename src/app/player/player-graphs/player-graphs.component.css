@@ -1,0 +1,43 @@
+.container{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/******        TAB BAR         ******/
+/*TODO multiple instances of this code see player-vehicles-stats*/
+.tab-bar{
+}
+
+.tab-bar ul{
+  display: inline;
+  margin: 0;
+  padding-top: 8px;;
+}
+
+.tab {
+  display: inline-block;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  padding: 8px;
+  margin: 0;
+  min-width: 10ch;
+  border-bottom: 2px solid black;
+}
+
+.tab-active{
+  background-color: white;
+  border: 2px solid black;
+  border-bottom: hidden;
+}
+/******        TAB BAR         ******/
+
+
+/******        CHARTS         ******/
+svg{
+  display: block;
+
+  border: 1px solid black;
+}
+/******        CHARTS         ******/
+

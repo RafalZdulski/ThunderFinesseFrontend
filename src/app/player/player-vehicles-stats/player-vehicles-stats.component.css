@@ -1,15 +1,15 @@
-#container{
+.container{
   margin-left: auto;
   margin-right: auto;
 }
 
 /******        TAB BAR         ******/
+/*TODO multiple instances of this code see player-graphs*/
 .tab-bar{
-  margin: 0px;
 }
 
-ul{
-  display: block;
+.tab-bar ul{
+  display: inline;
   margin: 0;
   padding-top: 8px;;
 }

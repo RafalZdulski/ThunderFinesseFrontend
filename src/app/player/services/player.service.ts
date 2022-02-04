@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Player } from '../../../model/player';
-import { Vehicle } from '../../../model/vehicle';
 import {Observable} from "rxjs";
+import {Graphs} from "../../../model/graphs";
 
 @Injectable({ providedIn: 'root' })
 export class PlayerService {
@@ -17,5 +17,8 @@ export class PlayerService {
     return this.http.get<Player>(this.usersUrl+login).pipe();
   }
 
+  public getPlayerGraphData(login : string) : Observable<Graphs[]> {
+    return this.http.get<Graphs[]>(this.usersUrl+login+'/graphs').pipe();
+  }
 
 }

@@ -3,6 +3,11 @@ h2{
   padding: 1ch;
 }
 
+.container{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .navbar{
   margin: 0px 0px 4px;
 }

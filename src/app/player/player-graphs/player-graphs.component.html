@@ -1,1 +1,58 @@
-<p>player-graphs works!</p>
+
+<app-player-navbar></app-player-navbar>
+
+<div class="container">
+  <div class="tab-bar">
+    <ul>
+      <li class="tab" value="air_ab" #air_ab (click)="changeMode(air_ab)" ><div>AB air</div></li>
+      <li class="tab" value="ground_ab" #ground_ab (click)="changeMode(ground_ab)" ><div>AB ground</div></li>
+      <li class="tab" value="air_rb" #air_rb (click)="changeMode(air_rb)" ><div>RB air</div></li>
+      <li class="tab tab-active" value="ground_rb" #ground_rb (click)="changeMode(ground_rb)" ><div>RB ground</div></li>
+      <li class="tab" value="air_sb" #air_sb (click)="changeMode(air_sb)" ><div>SB air</div></li>
+      <li class="tab" value="ground_sb" #ground_sb (click)="changeMode(ground_sb)" ><div>SB ground</div></li>
+    </ul>
+  </div>
+</div>
+
+<div class="graph-container">
+  <div hidden *ngFor="let graph of graphs" id="{{graph.mode}}" class="mode-container">
+    <div>
+      <div class="graph-group">
+        <button class="graph-btn" value="battles">battles</button>
+        <button class="graph-btn" value="wr">win ratio</button>
+        <button class="graph-btn" value="kd">kd ratio</button>
+        <div class="battles graph">
+          <svg class="battles-per-rank-graph"></svg>
+        </div>
+        <div class="wr graph">
+          <svg class="wr-per-rank-graph"></svg>
+        </div>
+        <div class="kd graph">
+          <svg class="kd-per-rank-graph"></svg>
+        </div>
+      </div>
+      <div class="graph-group">
+        <div class="graph">
+          <svg class="battles-per-nation-graph"></svg>
+        </div>
+        <div class="graph">
+          <svg class="wr-per-nation-graph"></svg>
+        </div>
+        <div class="graph">
+          <svg class="kd-per-nation-graph"></svg>
+        </div>
+      </div>
+      <div class="graph-group">
+        <div class="graph">
+          <svg class="battles-per-class-graph"></svg>
+        </div>
+        <div class="graph">
+          <svg class="wr-per-class-graph"></svg>
+        </div>
+        <div class="graph">
+          <svg class="kd-per-class-graph"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

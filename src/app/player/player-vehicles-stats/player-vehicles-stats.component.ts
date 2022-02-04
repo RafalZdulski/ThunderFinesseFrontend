@@ -30,13 +30,13 @@ export class PlayerVehiclesStatsComponent implements OnInit {
   kdRatioSum = 0;
   ksRatioSum = 0;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private playerService : PlayerService) {
+  constructor(private activatedRoute: ActivatedRoute, private playerService : PlayerService) {
+    //getting login from url
     this.activatedRoute.params.subscribe(params => {
       this.login = params['login'];
     });
 
-    //getting stats
+    //getting player fromm backend
     this.playerService.getPlayer(this.login).subscribe(
       player => {
         this.player = player;
@@ -51,6 +51,8 @@ export class PlayerVehiclesStatsComponent implements OnInit {
         this.filterList();
       }
     )
+
+
     this.setRatiosColors()
   }
 
