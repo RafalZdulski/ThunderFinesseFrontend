@@ -1,6 +1,6 @@
 import {Vehicle} from "./vehicle";
 
-export interface Player{
+export interface PlayerVehiclesLists {
 
     login: string;
     air_ab: Vehicle[];

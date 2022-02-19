@@ -31,5 +31,8 @@ export class PlayerNavbarComponent implements OnInit {
   }
 
 
-
+  update(login: string) {
+    this.playerService.update(login);
+    window.location.reload();
+  }
 }

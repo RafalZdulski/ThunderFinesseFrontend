@@ -1,3 +1,25 @@
 <app-player-navbar></app-player-navbar>
 
+<div class="container">
+  <!--piechart-->
+  <div>
+    <div>
+      <svg id="battles-pie-chart"></svg>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <div>
+    <div class="mode" *ngFor="let mode of data.sort(compareModes)">
+      <div>{{mode.mode.toUpperCase()}} {{mode.type}}</div>
+      <ul>
+        <li>battles: <span>{{mode.battles}}</span></li>
+        <li>wr%: <span>{{(mode.winRatio*100).toFixed(2).substr(0,5)}}</span></li>
+        <li>k/d: <span>{{(mode.kdRatio*1).toFixed(2)}}</span></li>
+        <li [hidden]="mode.type!='air'" >air k/d<span>{{(mode.airKdRatio*1).toFixed(2)}}</span></li>
+        <li [hidden]="mode.type!='ground'" >k/s: <span>{{(mode.ksRatio*1).toFixed(2)}}</span></li>
+      </ul>
+    </div>
+  </div>
+</div>

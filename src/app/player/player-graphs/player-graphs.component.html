@@ -4,53 +4,99 @@
 <div class="container">
   <div class="tab-bar">
     <ul>
-      <li class="tab" value="air_ab" #air_ab (click)="changeMode(air_ab)" ><div>AB air</div></li>
-      <li class="tab" value="ground_ab" #ground_ab (click)="changeMode(ground_ab)" ><div>AB ground</div></li>
-      <li class="tab" value="air_rb" #air_rb (click)="changeMode(air_rb)" ><div>RB air</div></li>
-      <li class="tab tab-active" value="ground_rb" #ground_rb (click)="changeMode(ground_rb)" ><div>RB ground</div></li>
-      <li class="tab" value="air_sb" #air_sb (click)="changeMode(air_sb)" ><div>SB air</div></li>
-      <li class="tab" value="ground_sb" #ground_sb (click)="changeMode(ground_sb)" ><div>SB ground</div></li>
+      <li class="tab" value="ab_air" #air_ab (click)="changeMode(air_ab)" ><div>AB air</div></li>
+      <li class="tab" value="ab_ground" #ground_ab (click)="changeMode(ground_ab)" ><div>AB ground</div></li>
+      <li class="tab" value="rb_air" #air_rb (click)="changeMode(air_rb)" ><div>RB air</div></li>
+      <li class="tab tab-active" value="rb_ground" #ground_rb (click)="changeMode(ground_rb)" ><div>RB ground</div></li>
+      <li class="tab" value="sb_air" #air_sb (click)="changeMode(air_sb)" ><div>SB air</div></li>
+      <li class="tab" value="sb_ground" #ground_sb (click)="changeMode(ground_sb)" ><div>SB ground</div></li>
     </ul>
   </div>
 </div>
 
-<div class="graph-container">
-  <div hidden *ngFor="let graph of graphs" id="{{graph.mode}}" class="mode-container">
-    <div>
-      <div class="graph-group">
-        <button class="graph-btn" value="battles">battles</button>
-        <button class="graph-btn" value="wr">win ratio</button>
-        <button class="graph-btn" value="kd">kd ratio</button>
-        <div class="battles graph">
-          <svg class="battles-per-rank-graph"></svg>
+<div class="container">
+  <div class="graph-container">
+    <div hidden *ngFor="let graph of graphs" id="{{graph.mode}}_{{graph.type}}" class="mode-container">
+      <div>
+        <div class="graph-group per-rank">
+          <button class="graph-btn btn-active battles" (click)="setGraph('rank','battles')">battles</button>
+          <button class="graph-btn wr" (click)="setGraph('rank','wr')">win ratio</button>
+          <button class="graph-btn kd" (click)="setGraph('rank','kd')">kd ratio</button>
+          <div>
+            <div [hidden]="typePerRank!='battles'" class="graph">
+              <svg class="battles-per-rank-graph"></svg>
+            </div>
+            <div [hidden]="typePerRank!='wr'"class="graph">
+              <svg class="wr-per-rank-graph"></svg>
+            </div>
+            <div [hidden]="typePerRank!='kd'"class="graph">
+              <svg class="kd-per-rank-graph"></svg>
+            </div>
+          </div>
         </div>
-        <div class="wr graph">
-          <svg class="wr-per-rank-graph"></svg>
+        <div class="graph-group per-nation">
+          <button class="graph-btn btn-active battles" (click)="setGraph('nation','battles')">battles</button>
+          <button class="graph-btn wr" (click)="setGraph('nation','wr')">win ratio</button>
+          <button class="graph-btn kd" (click)="setGraph('nation','kd')">kd ratio</button>
+          <div>
+            <div [hidden]="typePerNation!='battles'" class="graph">
+              <svg class="battles-per-nation-graph"></svg>
+            </div>
+            <div [hidden]="typePerNation!='wr'" class="graph">
+              <svg class="wr-per-nation-graph"></svg>
+            </div>
+            <div [hidden]="typePerNation!='kd'" class="graph">
+              <svg class="kd-per-nation-graph"></svg>
+            </div>
+          </div>
         </div>
-        <div class="kd graph">
-          <svg class="kd-per-rank-graph"></svg>
+        <div class="graph-group per-class">
+          <button class="graph-btn btn-active battles" (click)="setGraph('class','battles')">battles</button>
+          <button class="graph-btn wr" (click)="setGraph('class','wr')">win ratio</button>
+          <button class="graph-btn kd" (click)="setGraph('class','kd')">kd ratio</button>
+          <div>
+            <div [hidden]="typePerClass!='battles'" class="graph">
+              <svg class="battles-per-class-graph"></svg>
+            </div>
+            <div [hidden]="typePerClass!='wr'" class="graph">
+              <svg class="wr-per-class-graph"></svg>
+            </div>
+            <div [hidden]="typePerClass!='kd'" class="graph">
+              <svg class="kd-per-class-graph"></svg>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="graph-group">
-        <div class="graph">
-          <svg class="battles-per-nation-graph"></svg>
+        <div class="graph-group per-status">
+          <button class="graph-btn btn-active battles" (click)="setGraph('status','battles')">battles</button>
+          <button class="graph-btn wr" (click)="setGraph('status','wr')">win ratio</button>
+          <button class="graph-btn kd" (click)="setGraph('status','kd')">kd ratio</button>
+          <div>
+            <div [hidden]="typePerStatus!='battles'" class="graph">
+              <svg class="battles-per-status-graph"></svg>
+            </div>
+            <div [hidden]="typePerStatus!='wr'" class="graph">
+              <svg class="wr-per-status-graph"></svg>
+            </div>
+            <div [hidden]="typePerStatus!='kd'" class="graph">
+              <svg class="kd-per-status-graph"></svg>
+            </div>
+          </div>
         </div>
-        <div class="graph">
-          <svg class="wr-per-nation-graph"></svg>
-        </div>
-        <div class="graph">
-          <svg class="kd-per-nation-graph"></svg>
-        </div>
-      </div>
-      <div class="graph-group">
-        <div class="graph">
-          <svg class="battles-per-class-graph"></svg>
-        </div>
-        <div class="graph">
-          <svg class="wr-per-class-graph"></svg>
-        </div>
-        <div class="graph">
-          <svg class="kd-per-class-graph"></svg>
+        <div class="br-nation-heatmap">
+          <button class="graph-btn btn-active battles" (click)="setGraph('heatmap','battles')">battles</button>
+          <button class="graph-btn wr" (click)="setGraph('heatmap','wr')">win ratio</button>
+          <button class="graph-btn kd" (click)="setGraph('heatmap','kd')">kd ratio</button>
+          <div>
+            <div [hidden]="brNationHeatmap!='battles'" class="graph">
+              <svg class="battles-br-nation-heatmap"></svg>
+            </div>
+            <div [hidden]="brNationHeatmap!='wr'" class="graph">
+              <svg class="wr-br-nation-heatmap"></svg>
+            </div>
+            <div [hidden]="brNationHeatmap!='kd'" class="graph">
+              <svg class="kd-br-nation-heatmap"></svg>
+            </div>
+          </div>
         </div>
       </div>
     </div>

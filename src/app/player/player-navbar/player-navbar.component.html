@@ -1,5 +1,12 @@
 <div class="container">
-  <h2><a href="player/{{login}}">{{login}}</a></h2>
+  <div class="login">
+    <div>
+      <h2><a href="player/{{login}}">{{login}}</a></h2>
+    </div>
+    <div class="update-btn">
+      <button (click)="update(login)">update</button>
+    </div>
+  </div>
 
   <div class="navbar">
     <ul>

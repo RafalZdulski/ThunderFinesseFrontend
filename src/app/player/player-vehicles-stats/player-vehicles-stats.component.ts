@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Player} from "../../../model/player";
+import {PlayerVehiclesLists} from "../../../model/playerVehiclesLists";
 import {ActivatedRoute} from "@angular/router";
 import {PlayerService} from "../services/player.service";
 import * as $ from 'jquery';
@@ -12,7 +12,7 @@ import {get} from "jquery";
   styleUrls: ['./player-vehicles-stats.component.css']
 })
 export class PlayerVehiclesStatsComponent implements OnInit {
-  player!: Player;
+  player!: PlayerVehiclesLists;
   login!: string;
   mode = 1; //0-ab 1-rb 2-sb = index in battleRating array
   type = 'ground'; //used for hiding appropriate class filter, possible values: 'ground' 'air
@@ -134,48 +134,54 @@ export class PlayerVehiclesStatsComponent implements OnInit {
     switch(el.id){
       case 'air_ab' :
         this.allVehicles = this.player.air_ab;
-        this.filteredVehicles = this.allVehicles.copyWithin(
-          this.allVehicles.length,0);
+        this.filteredVehicles = this.allVehicles
+          .copyWithin(this.allVehicles.length,0)
+          .sort(function (v1,v2){return v2.battles-v1.battles});
         this.mode=0;
         mode = "br-ab";
         this.type = 'air';
         break;
       case 'ground_ab' :
         this.allVehicles = this.player.ground_ab;
-        this.filteredVehicles = this.allVehicles.copyWithin(
-          this.allVehicles.length,0);
+        this.filteredVehicles = this.allVehicles
+          .copyWithin(this.allVehicles.length,0)
+          .sort(function (v1,v2){return v2.battles-v1.battles});
         this.mode=0;
         mode = "br-ab";
         this.type = 'ground';
         break;
       case 'air_rb' :
         this.allVehicles = this.player.air_rb;
-        this.filteredVehicles = this.allVehicles.copyWithin(
-          this.allVehicles.length,0);
+        this.filteredVehicles = this.allVehicles
+          .copyWithin(this.allVehicles.length,0)
+          .sort(function (v1,v2){return v2.battles-v1.battles});
         this.mode=1;
         mode = "br-rb";
         this.type = 'air';
         break;
       case 'ground_rb' :
         this.allVehicles = this.player.ground_rb;
-        this.filteredVehicles = this.allVehicles.copyWithin(
-          this.allVehicles.length,0);
+        this.filteredVehicles = this.allVehicles
+          .copyWithin(this.allVehicles.length,0)
+          .sort(function (v1,v2){return v2.battles-v1.battles});
         this.mode=1;
         mode = "br-rb";
         this.type = 'ground';
         break;
       case 'air_sb' :
         this.allVehicles = this.player.air_sb;
-        this.filteredVehicles = this.allVehicles.copyWithin(
-          this.allVehicles.length,0);
+        this.filteredVehicles = this.allVehicles
+          .copyWithin(this.allVehicles.length,0)
+          .sort(function (v1,v2){return v2.battles-v1.battles});
         this.mode=2;
         mode = "br-sb";
         this.type = 'air';
         break;
       case 'ground_sb' :
         this.allVehicles = this.player.ground_sb;
-        this.filteredVehicles = this.allVehicles.copyWithin(
-          this.allVehicles.length,0);
+        this.filteredVehicles = this.allVehicles
+          .copyWithin(this.allVehicles.length,0)
+          .sort(function (v1,v2){return v2.battles-v1.battles});
         this.mode=2;
         mode = "br-sb";
         this.type = 'ground';
@@ -188,6 +194,7 @@ export class PlayerVehiclesStatsComponent implements OnInit {
     });
 
     //init filterList to set values in summary-row after each change of mode
+
     this.filterList();
 
     this.setRatiosColors();
@@ -259,6 +266,8 @@ export class PlayerVehiclesStatsComponent implements OnInit {
       })
       return vals;
     }
+
+    this.setRatiosColors();
   }
 
   setRatiosColors(){

@@ -4,7 +4,9 @@
 }
 
 #container{
-  padding: 1ch 5% 1ch 5%;
   margin-left: auto;
   margin-right: auto;
+  min-width: 35em;
+  max-width: 70em;
+  padding: 10px;
 }

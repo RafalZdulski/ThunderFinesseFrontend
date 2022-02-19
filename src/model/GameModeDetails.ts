@@ -1,10 +1,13 @@
 
-export interface Graphs {
+export interface GameModeDetails {
   mode: string;
+  type: string;
 
   ranks: string[];
   nations: string[];
   classes: string[];
+  statuses: string[];
+  battleRatings: string[];
 
   battlesPerRank: number[];
   kdPerRank: number[];
@@ -17,4 +20,12 @@ export interface Graphs {
   battlesPerClass: number[];
   kdPerClass: number[];
   wrPerClass: number[];
+
+  battlesPerStatus: number[];
+  kdPerStatus: number[];
+  wrPerStatus: number[];
+
+  battlesBrNationHeatMap: number[][];
+  wrBrNationHeatmap: number[][];
+  kdBrNationHeatmap: number[][];
 }

@@ -36,8 +36,8 @@
 #filters-tab{
   background-color: lightblue;
   border: 2px outset;
-  margin:  1em 1em 0;
-  padding: 5px 1em 1em;
+  margin:  1em 0em 0;
+  padding: 5px 1em 5px;
   font-weight: bold;
 }
 #filters-tab.active{
@@ -112,7 +112,7 @@
 
 /******        TABLE         ******/
 table {
-  border: outset;
+  padding: 0;
   margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
@@ -140,8 +140,10 @@ th{
   background-color: lightblue;
   border-bottom: 2px outset;
 }
-th[sorted][data-order|='asc']::after { content: "   \25bc" }
-th[sorted][data-order|='desc']::after { content: "   \25b2" }
+
+th[sorted][data-order|='asc']::after { content: "\25bc" }
+th[sorted][data-order|='desc']::after { content: "\25b2" }
+
 
 #summary-row{
   font-style: italic;

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule} from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router'
@@ -15,6 +14,7 @@ import {PlayerService} from "./player/services/player.service";
 import { PlayerNavbarComponent } from './player/player-navbar/player-navbar.component';
 import { PlayerGraphsComponent } from './player/player-graphs/player-graphs.component';
 import { SortTableDirective } from './directive/sort-table.directive';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -34,7 +34,9 @@ import { SortTableDirective } from './directive/sort-table.directive';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [PlayerService],
+  providers: [
+    PlayerService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

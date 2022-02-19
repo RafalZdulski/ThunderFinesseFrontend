@@ -1,6 +1,16 @@
-h2{
-  margin: 0 0 0 3em;
+.login{
+  margin: 0 3em 0 3em;
   padding: 1ch;
+}
+
+.login > div{
+  display: inline-block;
+}
+
+.update-btn{
+  float: right;
+  padding: 1ch;
+  margin-right: 3em;
 }
 
 .container{

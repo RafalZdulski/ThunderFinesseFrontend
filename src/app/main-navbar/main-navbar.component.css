@@ -1,13 +1,36 @@
-#searchbar{
-  text-align: center;
+.logo{
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.navbar{
   padding: 10px;
   margin: 0;
   background-color: lightblue;
   border-bottom: 5px outset;
+  min-width: 420px;
+}
+
+.searchbar{
+  margin-left: 0;
+  margin-right: auto;
+  width: 50%;
 }
 
 #login{
-  width: 40%;
+  width: 80%;
 }
 
+
 button::after{ content: '\1F50D'}
+
+.logo{
+  width: 20ch;
+  text-align: left;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}

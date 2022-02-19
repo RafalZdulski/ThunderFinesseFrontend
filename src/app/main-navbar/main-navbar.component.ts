@@ -18,7 +18,7 @@ export class MainNavbarComponent implements OnInit {
     if (this.login.trim().length == 0){
       console.log("empty login");
     }else{
-      this.router.navigate(['player/' + this.login]);
+      this.router.navigate(['player/' + this.login]).then(r => window.location.reload());
     }
   }
 }
