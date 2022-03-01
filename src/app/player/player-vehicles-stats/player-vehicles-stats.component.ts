@@ -5,6 +5,7 @@ import {PlayerService} from "../services/player.service";
 import * as $ from 'jquery';
 import {Vehicle} from "../../../model/vehicle";
 import {get} from "jquery";
+import * as d3 from "d3";
 
 @Component({
   selector: 'app-player-vehicles-stats',
@@ -271,34 +272,32 @@ export class PlayerVehiclesStatsComponent implements OnInit {
   }
 
   setRatiosColors(){
+    let range = ["#FFFFFF","#FF6347", "#F0E68C",
+      "#90EE90", "#6495ED", "#9932CC", "#9932CC"];
+
+    let colorsWr = d3.scaleLinear().domain([0,1,45,52,58,63,1])
+      // @ts-ignore
+      .range(range);
+    let colorsKd = d3.scaleLinear().domain([0,0.01,1.0,1.5,2.0,2.5,3])
+      // @ts-ignore
+      .range(range);
+
     //TODO needs refactoring asap but i dont know other way to wait until ngFor finish
     setTimeout(function (){
       //setting win ratio colors
       $('td.win-ratio').each(function (i,el){
         let val = $(this);
-        if(Number.parseFloat(el.innerHTML) <= 45 ) val.css('background-color','tomato');
-        else if(Number.parseFloat(el.innerHTML) <= 52 ) val.css('background-color','khaki');
-        else if(Number.parseFloat(el.innerHTML) <= 58 ) val.css('background-color','lightgreen');
-        else if(Number.parseFloat(el.innerHTML) <= 63 ) val.css('background-color','CornflowerBlue');
-        else val.css('background-color','darkorchid');
+        val.css('background-color',colorsWr(Number.parseFloat(el.innerHTML)))
       });
       //setting kd ratio colors
       $('td.kd-ratio').each(function (i,el){
         let val = $(this);
-        if(Number.parseFloat(el.innerHTML) <= 1.0 ) val.css('background-color','tomato');
-        else if(Number.parseFloat(el.innerHTML) <= 1.5 ) val.css('background-color','khaki');
-        else if(Number.parseFloat(el.innerHTML) <= 2.0 ) val.css('background-color','lightgreen');
-        else if(Number.parseFloat(el.innerHTML) <= 2.5 ) val.css('background-color','CornflowerBlue');
-        else val.css('background-color','darkorchid');
+        val.css('background-color',colorsKd(Number.parseFloat(el.innerHTML)))
       });
       //setting ks ratio colors
       $('td.ks-ratio').each(function (i,el){
         let val = $(this);
-        if(Number.parseFloat(el.innerHTML) <= 1.0 ) val.css('background-color','tomato');
-        else if(Number.parseFloat(el.innerHTML) <= 1.5 ) val.css('background-color','khaki');
-        else if(Number.parseFloat(el.innerHTML) <= 2.0 ) val.css('background-color','lightgreen');
-        else if(Number.parseFloat(el.innerHTML) <= 2.5 ) val.css('background-color','CornflowerBlue');
-        else val.css('background-color','darkorchid');
+        val.css('background-color',colorsKd(Number.parseFloat(el.innerHTML)))
       });
     },1000)
   }

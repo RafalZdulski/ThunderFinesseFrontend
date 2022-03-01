@@ -90,16 +90,16 @@ export class PlayerGraphsComponent implements OnInit {
       svg = d3.select('#' + graph.mode+'_'+graph.type).select('.kd-per-status-graph');
       this.drawBarChart(svg, graph.kdPerStatus, graph.statuses, 'kd');
 
-      // svg = d3.select('#' + graph.mode+'_'+graph.type).select('.battles-br-nation-heatmap');
-      // this.drawHeatmap(svg, graph.battlesBrNationHeatMap, graph.battleRatings, graph.nations, 'battles');
-      // svg = d3.select('#' + graph.mode+'_'+graph.type).select('.wr-br-nation-heatmap');
-      // this.drawHeatmap(svg, graph.wrBrNationHeatmap, graph.battleRatings, graph.nations, 'wr');
-      // svg = d3.select('#' + graph.mode+'_'+graph.type).select('.kd-br-nation-heatmap');
-      // this.drawHeatmap(svg, graph.kdBrNationHeatmap, graph.battleRatings, graph.nations, 'kd');
+      svg = d3.select('#' + graph.mode+'_'+graph.type).select('.battles-br-nation-heatmap');
+      this.drawHeatmap(svg, graph.battlesBrNationHeatmap, graph.brs, graph.nations, 'battles');
+      svg = d3.select('#' + graph.mode+'_'+graph.type).select('.wr-br-nation-heatmap');
+      this.drawHeatmap(svg, graph.wrBrNationHeatmap, graph.brs, graph.nations, 'wr');
+      svg = d3.select('#' + graph.mode+'_'+graph.type).select('.kd-br-nation-heatmap');
+      this.drawHeatmap(svg, graph.kdBrNationHeatmap, graph.brs, graph.nations, 'kd');
     }
   }
 
-  drawBarChart(svg: any, values: any[], xLabels: string[], valTypes: string) {
+  drawBarChart(svg: any, values: any, xLabels: string[], valTypes: string) {
     let originalValues: number[];
     originalValues = [];
     //changing NaNs and Infinities into 0 - this will need rework
@@ -217,56 +217,17 @@ export class PlayerGraphsComponent implements OnInit {
       .call(d3.axisBottom(xScale))
   }
 
-  drawHeatmap(svg:any, values:any[][], xLabels: string[], yLabels:string[], valTypes:string) {
-    console.log(values);
-    let originalValues: number[][];
-    originalValues = [];
+  drawHeatmap(svg:any, values:any, yLabels: string[], xLabels:string[], valTypes:string) {
     //changing NaNs and Infinities into 0 - this will need rework
     for (let i = 0; i < values.length; i++) {
-      originalValues.push([]);
-      for (let j = 0; j < values[i].length; j++) {
-        originalValues[i].push(Number.parseFloat(values[i][j]));
-        values[i][j] = (values[i][j] == 'NaN' || values[i][j] == 'Infinity') ? 0 : values[i];
-      }
+      values[i].adjustedVal = (values[i].val == 'NaN' || values[i].val == 'Infinity') ? 0 : values[i].val;
     }
+    let cellHeight = 20, cellWidth = 45;
 
     // set the dimensions and margins of the graph
     let margin = {top: 30, right: 0, bottom: 30, left: 50},
-      width = 470 - margin.left - margin.right,
-      height = 250 - margin.top - margin.bottom;
-
-    // set the scale for values
-    let max = 0, yLabel = "", yAxisVals: any, yBarVals: any;
-    if (valTypes == "battles") {
-      max = 20_000;
-      yLabel = 'battles [1000]';
-      yAxisVals = function (x: number) {
-        return (x / 1000).toFixed(0)
-      }; //values on y axis
-      yBarVals = function (x: number) {
-        return x
-      }; //values seen above bar
-    }
-    else if (valTypes == "wr") {
-      max = 1;
-      yLabel = 'win ratio [%]';
-      yAxisVals = function (x: number) {
-        return (x * 100).toFixed(0)
-      };
-      yBarVals = function (x: number) {
-        return (x * 100).toFixed(1)
-      };
-    }
-    else if (valTypes == "kd") {
-      max = 4;
-      yLabel = 'k/d ratio';
-      yAxisVals = function (x: number) {
-        return x.toFixed(1)
-      }
-      yBarVals = function (x: number) {
-        return x.toFixed(2)
-      };
-    }
+      width = (cellWidth)*12 - margin.left - margin.right,
+      height = (cellHeight+4)*32 - margin.top - margin.bottom;
 
     svg.attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
@@ -274,8 +235,81 @@ export class PlayerGraphsComponent implements OnInit {
     let g = svg.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    let vals: any, domain:any;
+    if (valTypes == "battles") {
+      vals = function (x: any) {
+        if (x > 0)
+          return x
+        else
+          return '';
+      }; //values seen above bar
+      domain = [0,5,100,300,600,1000]
+    }
+    else if (valTypes == "wr") {
+      vals = function (x: any) {
+        if (x != 'NaN')
+          return (x * 100).toFixed(1)
+        else
+          return '';
+      };
+      domain = [0,0.01,0.45,0.52,0.58,0.63,1]
+    }
+    else if (valTypes == "kd") {
+      vals = function (x: any) {
+        if (x != 'NaN')
+          return (x*1).toFixed(2)
+        else
+          return '';
+      };
+      domain = [0,0.01,1.0,1.5,2.0,2.5,3]
+    }
 
 
+    let
+      yScale = d3.scaleBand().domain(yLabels).range([height, 0])
+        .paddingInner(.01).paddingOuter(.01),
+      xScale = d3.scaleBand().domain(xLabels).range([0, width-10])
+        .paddingInner(.01).paddingOuter(.05)
+
+    // Build color scale
+    var colors = d3.scaleLinear()
+      .domain(domain)
+      // @ts-ignore
+      .range(["#FFFFFF","#FF6347", "#F0E68C",
+        "#90EE90", "#6495ED", "#9932CC", "#9932CC"]);
+
+    let cells =  g.selectAll('rect')
+      .data(values)
+      .enter().append('g').append('rect')
+      .attr('width',cellWidth).attr('height',cellHeight)
+      .attr('y', (d:any) => yScale(d.br))
+      .attr('x', (d:any) => xScale(d.nation))
+      .style('fill',(d:any) => colors(d.adjustedVal))
+      .style('border','3px solid black');
+
+    var valuesText = g.selectAll(".valuesText")
+      .data(values)
+      .enter().append("text")
+      .attr('y', (d:any) => yScale(d.br))
+      .attr('x', (d:any) => xScale(d.nation))
+      .attr("dy", "0.9em")
+      .attr('dx',cellWidth-5)
+      .attr("text-anchor", "end")
+      .text((d:any) => vals(d.val));
+
+    //settingy y axis and values
+    g.append("g")
+      .call(d3.axisLeft(yScale))
+      .append("text")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("value");
+
+    //setting x axis and values
+    g.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(xScale))
   }
 
   typePerRank = 'battles';

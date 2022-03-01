@@ -7,7 +7,7 @@ export interface GameModeDetails {
   nations: string[];
   classes: string[];
   statuses: string[];
-  battleRatings: string[];
+  brs: string[];
 
   battlesPerRank: number[];
   kdPerRank: number[];
@@ -25,7 +25,7 @@ export interface GameModeDetails {
   kdPerStatus: number[];
   wrPerStatus: number[];
 
-  battlesBrNationHeatMap: number[][];
-  wrBrNationHeatmap: number[][];
-  kdBrNationHeatmap: number[][];
+  battlesBrNationHeatmap: any[];
+  wrBrNationHeatmap: any[];
+  kdBrNationHeatmap: any[];
 }
